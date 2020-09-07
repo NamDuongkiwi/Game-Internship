@@ -20,11 +20,11 @@ void GSIntro::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("logo");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("logo3");
 
 	m_logo = std::make_shared<Sprite2D>(model, shader, texture);
 	m_logo->Set2DPosition(screenWidth / 2, screenHeight / 2);
-	m_logo->SetSize(150, 150);
+	m_logo->SetSize(400, 400);
 }
 
 void GSIntro::Exit()

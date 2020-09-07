@@ -12,12 +12,13 @@ protected:
 	GLint			m_iWidth;
 
 public:
+	Sprite2D() {};
 	Sprite2D(std::shared_ptr<Models> model, std::shared_ptr<Shaders> shader, std::shared_ptr<Texture> texture);
 	Sprite2D(std::shared_ptr<Models> model, std::shared_ptr<Shaders> shader, Vector4 color);
 	~Sprite2D();
 
 	void		Init() override;
-	void		Draw() final;
+	void		Draw() override;
 	void		Update(GLfloat deltatime) override;
 
 	void		SetText(std::string text);

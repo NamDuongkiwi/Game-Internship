@@ -72,6 +72,15 @@
     <ClCompile Include="src\GameStates\GSSetting.cpp">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameObject\Bullet.cpp">
+      <Filter>TrainingFramework\src\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Enemy.cpp">
+      <Filter>TrainingFramework\src\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject\Player.cpp">
+      <Filter>TrainingFramework\src\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h">
@@ -134,8 +143,21 @@
     <ClInclude Include="src\GameStates\GSSetting.h">
       <Filter>TrainingFramework\src\GameStates</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\GameObject\Bullet.h">
+      <Filter>TrainingFramework\src\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Enemy.h">
+      <Filter>TrainingFramework\src\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject\Player.h">
+      <Filter>TrainingFramework\src\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TrainingFramework.rc" />
   </ItemGroup>
 </Project>

@@ -262,6 +262,9 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
+    <ClCompile Include="src\GameObject\Player.cpp" />
+    <ClCompile Include="src\GameObject\Bullet.cpp" />
+    <ClCompile Include="src\GameObject\Enemy.cpp" />
     <ClCompile Include="src\GameObject\Font.cpp" />
     <ClCompile Include="src\GameObject\GameButton.cpp" />
     <ClCompile Include="src\GameObject\Sprite2D.cpp" />
@@ -280,11 +283,15 @@
     <ClCompile Include="src\TrainingFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\GameConfig.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
+    <ClInclude Include="src\GameObject\Player.h" />
     <ClInclude Include="src\GameObject\BaseObject.h" />
+    <ClInclude Include="src\GameObject\Bullet.h" />
+    <ClInclude Include="src\GameObject\Enemy.h" />
     <ClInclude Include="src\GameObject\Font.h" />
     <ClInclude Include="src\GameObject\GameButton.h" />
     <ClInclude Include="src\GameObject\Sprite2D.h" />
@@ -303,6 +310,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TrainingFramework.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
