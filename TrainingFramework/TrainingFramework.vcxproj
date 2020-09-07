@@ -261,9 +261,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\GameEntity\Boom.cpp" />
+    <ClCompile Include="src\GameEntity\Bullet.cpp" />
+    <ClCompile Include="src\GameEntity\MainCharacter.cpp" />
+    <ClCompile Include="src\GameEntity\MainCharacter.cpp" />
+    <ClCompile Include="src\GameEntity\Monster.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\GameObject\Boom.cpp" />
     <ClCompile Include="src\GameObject\Bullet.cpp" />
+=======
+    <ClCompile Include="src\GameObject\Player.cpp" />
+    <ClCompile Include="src\GameObject\Enemy.cpp" />
+>>>>>>> 8eb5612be7992648d90237e85683e8ac5385e1d7
     <ClCompile Include="src\GameObject\Font.cpp" />
     <ClCompile Include="src\GameObject\GameButton.cpp" />
     <ClCompile Include="src\GameObject\MainCharacter.cpp" />
@@ -283,13 +293,23 @@
     <ClCompile Include="src\TrainingFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\GameConfig.h" />
+    <ClInclude Include="src\GameEntity\Boom.h" />
+    <ClInclude Include="src\GameEntity\Bullet.h" />
+    <ClInclude Include="src\GameEntity\MainCharacter.h" />
+    <ClInclude Include="src\GameEntity\Monster.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
+    <ClInclude Include="src\GameObject\Player.h" />
     <ClInclude Include="src\GameObject\BaseObject.h" />
+<<<<<<< HEAD
     <ClInclude Include="src\GameObject\Boom.h" />
     <ClInclude Include="src\GameObject\Bullet.h" />
+=======
+    <ClInclude Include="src\GameObject\Enemy.h" />
+>>>>>>> 8eb5612be7992648d90237e85683e8ac5385e1d7
     <ClInclude Include="src\GameObject\Font.h" />
     <ClInclude Include="src\GameObject\GameButton.h" />
     <ClInclude Include="src\GameObject\MainCharacter.h" />
@@ -309,6 +329,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TrainingFramework.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
