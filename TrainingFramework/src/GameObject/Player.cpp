@@ -46,8 +46,7 @@ void Player::Shoot(){
 
 
 void Player::Init() {
-	Sprite2D::Init();
-	
+	Sprite2D::Init();	
 }
 
 int presss = 0;

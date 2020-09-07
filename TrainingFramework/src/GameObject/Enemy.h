@@ -1,7 +1,7 @@
 #pragma once
 #include "Sprite2D.h"
 #include "Sprite2D.h"
-#include "Bullet.h"
+#include "GameEntity/Bullet.h"
 #include "GameStates/GameStateBase.h"
 #include "Enemy.h"
 #include "Player.h"

@@ -1,6 +1,6 @@
 #pragma once
 #include "Sprite2D.h"
-#include "Bullet.h"
+#include "GameEntity/Bullet.h"
 #include "GameStates/GameStateBase.h"
 #include "Enemy.h"
 enum MoveDirection
@@ -39,4 +39,5 @@ protected:
 	//
 	//std::shared_ptr<Bullet> m_bullet;
 	std::vector<std::shared_ptr<Bullet>> m_list_bullet;
+	
 };

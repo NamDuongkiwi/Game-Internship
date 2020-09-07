@@ -261,9 +261,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\GameEntity\Boom.cpp" />
+    <ClCompile Include="src\GameEntity\Bullet.cpp" />
+    <ClCompile Include="src\GameEntity\MainCharacter.cpp" />
+    <ClCompile Include="src\GameEntity\MainCharacter.cpp" />
+    <ClCompile Include="src\GameEntity\Monster.cpp" />
     <ClCompile Include="src\GameManager\ResourceManagers.cpp" />
     <ClCompile Include="src\GameObject\Player.cpp" />
-    <ClCompile Include="src\GameObject\Bullet.cpp" />
     <ClCompile Include="src\GameObject\Enemy.cpp" />
     <ClCompile Include="src\GameObject\Font.cpp" />
     <ClCompile Include="src\GameObject\GameButton.cpp" />
@@ -286,11 +290,14 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\GameConfig.h" />
+    <ClInclude Include="src\GameEntity\Boom.h" />
+    <ClInclude Include="src\GameEntity\Bullet.h" />
+    <ClInclude Include="src\GameEntity\MainCharacter.h" />
+    <ClInclude Include="src\GameEntity\Monster.h" />
     <ClInclude Include="src\GameManager\ResourceManagers.h" />
     <ClInclude Include="src\GameManager\Singleton.h" />
     <ClInclude Include="src\GameObject\Player.h" />
     <ClInclude Include="src\GameObject\BaseObject.h" />
-    <ClInclude Include="src\GameObject\Bullet.h" />
     <ClInclude Include="src\GameObject\Enemy.h" />
     <ClInclude Include="src\GameObject\Font.h" />
     <ClInclude Include="src\GameObject\GameButton.h" />
