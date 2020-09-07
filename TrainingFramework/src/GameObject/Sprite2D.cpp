@@ -170,11 +170,7 @@ void Sprite2D::SetSize(GLint width, GLint height)
 	m_iHeight = height;
 	m_Vec3Scale = Vector3((float)m_iWidth / screenWidth, (float)m_iHeight / screenHeight, 1);
 	CaculateWorldMatrix();
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8eb5612be7992648d90237e85683e8ac5385e1d7
 }
 
 float Sprite2D::getheight() {

@@ -16,9 +16,6 @@
     <Filter Include="TrainingFramework\src\GameStates">
       <UniqueIdentifier>{2a875364-1a2b-4ea6-a6fe-716988208916}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TrainingFramework\src\GameEntity">
-      <UniqueIdentifier>{c6337c41-f6ce-4755-a841-b62133ba84ca}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">
@@ -83,24 +80,6 @@
     </ClCompile>
     <ClCompile Include="src\GameObject\Monster.cpp">
       <Filter>TrainingFramework\src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObject\Enemy.cpp">
-      <Filter>TrainingFramework\src\GameStates</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObject\Player.cpp">
-      <Filter>TrainingFramework\src\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEntity\MainCharacter.cpp">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEntity\Bullet.cpp">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEntity\Monster.cpp">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEntity\Boom.cpp">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,30 +152,8 @@
     <ClInclude Include="src\GameObject\Monster.h">
       <Filter>TrainingFramework\src\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="src\GameObject\Enemy.h">
-      <Filter>TrainingFramework\src\GameStates</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObject\Player.h">
-      <Filter>TrainingFramework\src\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEntity\MainCharacter.h">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEntity\Bullet.h">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEntity\Monster.h">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEntity\Boom.h">
-      <Filter>TrainingFramework\src\GameEntity</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="TrainingFramework.rc" />
   </ItemGroup>
 </Project>

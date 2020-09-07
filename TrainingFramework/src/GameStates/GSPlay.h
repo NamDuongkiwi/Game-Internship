@@ -1,14 +1,8 @@
 #pragma once
 #include "gamestatebase.h"
-<<<<<<< HEAD
 #include "MainCharacter.h"
 #include "Monster.h"
 #include "Boom.h"
-=======
-#include "GameEntity/MainCharacter.h"
-#include "GameEntity/Monster.h"
-#include "GameEntity/Boom.h"
->>>>>>> 8eb5612be7992648d90237e85683e8ac5385e1d7
 
 class Sprite2D;
 class Sprite3D;
