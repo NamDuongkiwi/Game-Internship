@@ -2,9 +2,13 @@
 #include "Shaders.h"
 #include "Application.h"
 #include "utilities.h" 
+#include <soloud.h>
+#include <soloud_speech.h>
+#include <soloud_thread.h>
+#include <time.h>
 
 GLint screenWidth = 480;
-GLint screenHeight = 800;
+GLint screenHeight = 700;
 
 
 GLint Init(ESContext* esContext)
@@ -42,7 +46,7 @@ void CleanUp()
 
 GLint _tmain(GLint argc, _TCHAR* argv[])
 {
-
+	srand(time(NULL));
 	ESContext esContext;
 	esInitContext(&esContext);
 	esCreateWindow(&esContext, "Demo Game", screenWidth, screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
@@ -59,7 +63,7 @@ GLint _tmain(GLint argc, _TCHAR* argv[])
 	CleanUp();
 
 	//identifying memory leaks
-	MemoryDump();
+	//MemoryDump();
 	//printf("Press any key...\n");
 	//_getch();
 

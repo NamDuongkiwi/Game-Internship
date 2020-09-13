@@ -6,7 +6,7 @@
 #include "Models.h"
 #include "Texture.h"
 #include "ResourceManagers.h"
-
+#include "Application.h"
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
@@ -22,11 +22,33 @@ MainCharacter::MainCharacter(std::shared_ptr<Models> model, std::shared_ptr<Shad
 	this->SetSize(200, 200);
 	latency = 0;
 	keyPressed = 0;
-	//this->m_Vec3Scale((float)m_iWidth / screenWidth, (float)m_iHeight / screenHeight, -1);
+	this->m_status = NORMAL;
+	texture = ResourceManagers::GetInstance()->GetTexture("broom");
+	cantshoot = std::make_shared<Sprite2D>(model, shader, texture);
+	cantshoot->SetSize(200,200);
 }
+
+void MainCharacter::setStatus(Status status) {
+	this->m_status = status;
+}
+
+Status MainCharacter::getStatus() {
+	return this->m_status;
+}
+
+void MainCharacter::setShoot(bool cs) {
+	this->can_shoot = cs;
+}
+bool MainCharacter::getShoot() {
+	return this->can_shoot;
+}
+
 
 void MainCharacter::Init() {
 Sprite2D:Init();
+	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
+	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("broom");
 }
 
 
@@ -91,41 +113,98 @@ void MainCharacter::HitMonster(std::shared_ptr<Monster> monster) {
 	}
 }
 
-bool MainCharacter::checkCollision(std::shared_ptr<Sprite2D> obj) {
-	float m_lr = obj->Get2DPosition().x - obj->getheight() / 2;
-	float m_rr = obj->Get2DPosition().y + obj->getwidth() / 2;
-	float b_lr = this->Get2DPosition().x - this->getwidth() / 2;
-	float b_rr = this->Get2DPosition().x + this->getwidth() / 2;
-	float m_br = obj->Get2DPosition().y + obj->getheight() / 2;
-	float b_ar = this->Get2DPosition().y - this->getheight() / 2;
-	if (m_br > b_ar) {
-		if (m_lr < b_rr && m_lr > b_lr) {
+void MainCharacter::HitBoss(std::shared_ptr<Boss> monster) {
+	for (int i = 0; i < m_list_bullet.size(); i++) {
+		if (m_list_bullet.at(i)->checkCollision(monster) == true) {
+			monster->SetBlood(monster->GetBlood() - m_list_bullet.at(i)->getDame());
+			//printf("ban trung + %d + %d \n", m_list_bullet.at(i)->getDame(), monster->GetBlood());
+			m_list_bullet.erase(m_list_bullet.begin() + i);
+		}
+	}
+}
+
+bool MainCharacter::checkCollision(std::shared_ptr<Monster> obj) {
+	
+	//           |__________|
+	//
+	//          |======|
+	//
+	
+
+	float u_lr = obj->Get2DPosition().x - obj->getwidth() / 2 + 55;
+	float u_rr = obj->Get2DPosition().x + obj->getwidth() / 2 - 55;
+	float u_br = obj->Get2DPosition().y + obj->getheight() / 2 - 50;
+	float u_ar = obj->Get2DPosition().y - obj->getheight() / 2 + 40;
+
+	float d_lr = this->Get2DPosition().x - this->getwidth() / 2 + 65;
+	float d_rr = this->Get2DPosition().x + this->getwidth() / 2 - 65;
+	float d_br = this->Get2DPosition().y + this->getheight() / 2 - 40;
+	float d_ar = this->Get2DPosition().y - this->getheight() / 2 + 50;
+	
+
+	if (u_br > d_ar && u_ar < d_br) {
+		if (d_lr > u_rr || d_rr < u_lr) {
+			return false;
+		}
+		else if (d_lr < u_rr && d_rr > u_lr) {
 			return true;
 		}
-		else if (m_rr > b_lr && m_rr < b_rr) {
-			return true;
-		}
-		else if (m_lr < b_lr && m_rr > b_rr) {
-			return true;
-		}
+		//else if ( )
 		else return false;
 	}
 	else return false;
+
+	
 }
 
 
 
 
-void MainCharacter::Update(GLfloat deltaTime) {
-
-	//Shoot and bullet out range 
-	latency += deltaTime;
-	if (latency > 0.1 && this->can_shoot == true) {
-		Shoot();
-
-		latency = 0;
+float m_shoot = 0;
+float change_time;
+void MainCharacter::Shoot(float deltaTime) {
+		
+	m_shoot += deltaTime;
+	if (can_shoot == true && m_shoot > 0.1) {
+		GLfloat x = this->Get2DPosition().x;
+		GLfloat y = this->Get2DPosition().y;
+		auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
+		auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
+		auto texture = ResourceManagers::GetInstance()->GetTexture("egg");
+		std::shared_ptr<Bullet> bullet;
+		if (this->getStatus() == NORMAL) {
+			bullet = std::make_shared<Bullet>(model, shader, texture, EGG);
+			bullet->SetSize(40, 40);
+		}
+		else if (this->getStatus() == FIRE) {
+			bullet = std::make_shared<Bullet>(model, shader, texture, FIRE_EGG);
+			bullet->SetSize(40, 40);
+		}
+		else if (this->getStatus() == PAN) {
+			bullet = std::make_shared<Bullet>(model, shader, texture, PAN_EGG);
+			bullet->SetSize(90, 90);
+		}
+		bullet->Set2DPosition(x, y - 60);
+			//bullet->SetSize(40, 40);
+		m_list_bullet.push_back(bullet);			
+		Application::GetInstance()->m_soloud.setVolume(Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_shoot), 0.2);
+		m_shoot = 0;
 	}
+}
 
+void MainCharacter::changeStatus(float deltaTime) {
+	if (this->getStatus() == FIRE || this->getStatus() == PAN) {
+		change_time += deltaTime;
+	}
+	if (change_time > 10) {
+		this->setStatus(NORMAL);
+		change_time = 0;
+	}
+}
+void MainCharacter::Update(float deltaTime) {
+	changeStatus(deltaTime);
+	Shoot(deltaTime);
+	cantshoot->Set2DPosition(this->Get2DPosition().x, this->Get2DPosition().y);
 	for (int i = 0; i < m_list_bullet.size(); i++) {
 		std::shared_ptr<Bullet> bullet = m_list_bullet.at(i);
 		m_list_bullet.at(i)->Update(deltaTime);
@@ -134,8 +213,6 @@ void MainCharacter::Update(GLfloat deltaTime) {
 			bullet = NULL;
 		}
 	}
-
-
 	//keypress and move 
 	if (keyPressed & MRIGHT)
 	{
@@ -188,24 +265,10 @@ void MainCharacter::Update(GLfloat deltaTime) {
 		}
 		m_currentTime -= m_frameTime;
 	}
-
-
 }
 
 
 
-
-void MainCharacter::Shoot() {
-	GLfloat x = this->Get2DPosition().x;
-	GLfloat y = this->Get2DPosition().y;
-	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
-	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("egg");
-	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>(model, shader, texture);
-	bullet->Set2DPosition(x, y - 60);
-	bullet->SetSize(40, 40);
-	m_list_bullet.push_back(bullet);
-}
 
 
 
@@ -214,9 +277,6 @@ void MainCharacter::Draw() {
 	for (auto obj : m_list_bullet) {
 		obj->Draw();
 	}
-
-
-
 
 	//animation player
 	glUseProgram(m_pShader->program);

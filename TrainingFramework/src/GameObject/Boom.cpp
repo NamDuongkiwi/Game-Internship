@@ -1,15 +1,12 @@
-#include "Boom.h"
+#include"Boom.h"
+#include "Texture.h"
 #include "Shaders.h"
 #include "Models.h"
-#include "Texture.h"
-#include "ResourceManagers.h"
+Boom::Boom() {
 
-
-Boom::Boom() : Sprite2D(){
 }
 
-Boom::Boom(std::shared_ptr<Models> model, std::shared_ptr<Shaders> shader, std::shared_ptr<Texture> texture, int numFrames, float frameTime) : Sprite2D(model, shader, texture), m_numFrames(numFrames), m_frameTime(frameTime), m_currentFrame(0), m_currentTime(0.0) {
-}
+Boom::Boom(std::shared_ptr<Models> model, std::shared_ptr<Shaders> shader, std::shared_ptr<Texture> texture, int numFrames, float frameTime) : Sprite2D(model, shader, texture), m_numFrames(numFrames), m_frameTime(frameTime), m_currentFrame(0), m_currentTime(0.0){}
 
 void Boom::Update(float deltaTime) {
 	m_currentTime += deltaTime;
@@ -22,6 +19,7 @@ void Boom::Update(float deltaTime) {
 	}
 }
 void Boom::Draw() {
+	//animation player
 	glUseProgram(m_pShader->program);
 	glBindBuffer(GL_ARRAY_BUFFER, m_pModel->GetVertexObject());
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pModel->GetIndiceObject());
@@ -29,7 +27,7 @@ void Boom::Draw() {
 	GLuint iTempShaderVaribleGLID = -1;
 	Matrix matrixWVP;
 
-	matrixWVP = m_WorldMat;
+	matrixWVP = m_WorldMat;//* m_pCamera->GetLookAtCamera();
 
 	if (m_pTexture != nullptr)
 	{

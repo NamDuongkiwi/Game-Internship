@@ -7,6 +7,7 @@ extern GLint screenHeight;
 
 Application::Application()
 {
+	//m_soloud
 }
 
 
@@ -17,6 +18,12 @@ Application::~Application()
 
 void Application::Init()
 {
+	m_soloud.init();
+	sound_balloon.load("src/balloon.wav");
+	sound_shoot.load("src/shot.wav");
+	sound_gameplay.load("src/Ant.wav");
+	sound_bonus.load("src/bonus.wav");
+	sound_choidam.load("src/choidam.wav");
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	GameStateMachine::GetInstance()->PushState(StateTypes::STATE_Intro);
 }
