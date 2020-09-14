@@ -13,14 +13,13 @@ D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(113,66): warning 
 D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(113,44): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(162,43): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(169,20): warning C4018: '<': signed/unsigned mismatch
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(193,20): warning C4018: '<': signed/unsigned mismatch
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(212,47): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(219,20): warning C4018: '<': signed/unsigned mismatch
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(226,85): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(226,50): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(230,20): warning C4018: '<': signed/unsigned mismatch
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(338,22): warning C4018: '<': signed/unsigned mismatch
-D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(345,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(194,20): warning C4018: '<': signed/unsigned mismatch
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(213,47): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(220,20): warning C4018: '<': signed/unsigned mismatch
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(227,85): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(227,50): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(231,20): warning C4018: '<': signed/unsigned mismatch
+D:\Game-Internship\TrainingFramework\src\GameStates\GSPlay.cpp(348,39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xmemory(230,33): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
           with
           [

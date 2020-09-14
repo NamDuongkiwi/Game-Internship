@@ -178,9 +178,10 @@ void GSPlay::eatItem() {
 				Application::GetInstance()->m_soloud.setVolume(Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_bonus), 1.5);
 			}
 			else if (m_list_item.at(i)->getItemType() == CHILI && m_player->getStatus() == NORMAL) {
+				m_player->setStatus(FIRE);
 				Application::GetInstance()->m_soloud.setVolume(Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_bonus), 1.5);
 			}
-			else if (m_list_item.at(i)->getItemType() == TRUNGRAN ) {
+			else if (m_list_item.at(i)->getItemType() == NEPTUNE && m_player->getStatus() == FIRE ) {
 				Application::GetInstance()->m_soloud.setVolume(Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_bonus), 1.5);
 				m_player->setStatus(PAN);
 			}
@@ -321,30 +322,32 @@ void GSPlay::Update(float deltaTime)
 		}
 		eatItem();
 		
-		
+		for (auto obj : m_list_monster) {
+			obj->Update(deltaTime);
+			m_player->HitMonster(obj);
+			if (m_player->checkCollision(obj) == true) {
+				m_boom = CreatBoom(m_boss->Get2DPosition().x, m_boss->Get2DPosition().y);
+				m_boom->SetSize(200, 200);
+				GameOver();
+				Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_balloon);
+				Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_bokeu);
+			}
+		}
+		deleteMonster();
 		bosstime += deltaTime;
 		if (bosstime < 30) 	{
-			creatMonster(deltaTime);
-			for (auto obj : m_list_monster) {
-				obj->Update(deltaTime);
-				m_player->HitMonster(obj);
-				if (m_player->checkCollision(obj) == true) {
-					GameOver();
-				}
-			}
-			deleteMonster();
+			creatMonster(deltaTime);	
 		}
-		else if (bosstime > 30) {
-			for (int i = 0; i < m_list_monster.size(); i++) {
-				m_list_monster.erase(m_list_monster.begin() + i);
-			}
+		else if (bosstime > 30 && m_list_monster.size() == 0) {
 			m_boss->Update(deltaTime);
 			m_player->HitBoss(m_boss);
 			if (m_boss->GetBlood() < 0) {
-				m_boom->Set2DPosition(m_boss->Get2DPosition().x, m_boss->Get2DPosition().y);
-				m_boss->Set2DPosition(screenWidth / 2,-100);
+				m_boom = CreatBoom(m_boss->Get2DPosition().x, m_boss->Get2DPosition().y);
+				m_boom->SetSize(200,200);
+				Application::GetInstance()->m_soloud.play(Application::GetInstance()->sound_balloon);
+				m_boss->Set2DPosition(screenWidth / 2, -100);
 				bosstime = 0;
-			}
+			}	
 		}
 	}
 

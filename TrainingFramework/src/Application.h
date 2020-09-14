@@ -22,6 +22,7 @@ public:
 	SoLoud::Wav sound_gameplay;
 	SoLoud::Wav sound_bonus;
 	SoLoud::Wav sound_choidam;
+	SoLoud::Wav sound_bokeu;
 	//static int a;
 private:
 	

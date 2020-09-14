@@ -24,6 +24,7 @@ void Application::Init()
 	sound_gameplay.load("src/Ant.wav");
 	sound_bonus.load("src/bonus.wav");
 	sound_choidam.load("src/choidam.wav");
+	sound_bokeu.load("src/bokeu.wav");
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	GameStateMachine::GetInstance()->PushState(StateTypes::STATE_Intro);
 }
